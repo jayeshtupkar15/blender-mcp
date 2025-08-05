@@ -938,9 +938,16 @@ def asset_creation_strategy() -> str:
 
 # Main execution
 
-def main():
-    """Run the MCP server"""
-    mcp.run()
+def main(prompt=None):
+    if prompt:
+        print(f"🧠 Received prompt: {prompt}")
+        # Call your model download + scene load logic
+        from blender_mcp.prompt_handler import handle_prompt
+        handle_prompt(prompt)
+    else:
+        print("⚠️ No prompt provided, running default behavior...")
+        # You can keep original server behavior here if needed
+
 
 if __name__ == "__main__":
     main()
